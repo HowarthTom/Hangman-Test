@@ -43,13 +43,28 @@ def play_game(word_list):
         game.ask_letter()
         if game.num_letters < 1:
             print(f"Congratulations, you won! {game.word_guessed}")
-            return False
+            while True:
+                replay = input("Would you like to play again? [y/n] ")
+                if replay == "y":
+                    play_game(word_list)
+                elif replay == "n":
+                    return False
+                else:
+                    print("Please enter y for yes or n for no.")
+                    continue
         elif game.num_lives < 1:
             print(f"You lose! The mystery word was {game.word}")
-            return False
+            while True:
+                replay = input("Would you like to play again? [y/n] ")
+                if replay == "y":
+                    play_game(word_list)
+                elif replay == "n":
+                    return False
+                else:
+                    print("Please enter y for yes or n for no.")
+                    continue
         else:
             continue
-
 
 if __name__ == '__main__':
     word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']

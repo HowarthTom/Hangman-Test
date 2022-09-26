@@ -16,3 +16,6 @@
 ## Game function
 - Created a loop to continuously ask the user for input.
 - Added win/lose messages upon reaching either zero lives or zero unique characters remaining in the mystery word.
+
+## Replay
+- Added a replay function 
