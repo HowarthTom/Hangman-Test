@@ -36,19 +36,20 @@ class Hangman:
             print(f"{letter} was already tried. Letters used: {self.list_letters}")
         else:
             self.check_letter(letter)
-    
+
 def play_game(word_list):
     game = Hangman(word_list, num_lives=5)
-    while game.num_lives != 0:
+    while True:
         game.ask_letter()
         if game.num_letters < 1:
             print(f"Congratulations, you won! {game.word_guessed}")
-            break
+            return False
         elif game.num_lives < 1:
             print(f"You lose! The mystery word was {game.word}")
-            break
+            return False
         else:
             continue
+
 
 if __name__ == '__main__':
     word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']
