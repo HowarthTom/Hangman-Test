@@ -8,9 +8,10 @@ class Hangman:
         self.num_letters = len(self.word)
         self.word_guessed = ["_" for characters in self.word]
         self.num_lives = num_lives
+        self.list_letters = []
         print(f"The mystery word has {len(self.word)} characters")
         print(f"{self.word_guessed}")
-        pass
+
 
     def check_letter(self, letter):
         pass
@@ -21,6 +22,8 @@ class Hangman:
             print("Please, enter just one character.")
         elif letter not in string.ascii_letters:
             print("Please, enter a valid character.")
+        elif letter in self.list_letters:
+            print(f"{letter} was already tried. Letters used: {self.list_letters}")
         else:
             print(f"Thanks, you entered the letter {letter}")
     
