@@ -1,4 +1,5 @@
 import random
+import string
 
 class Hangman:
 
@@ -9,11 +10,17 @@ class Hangman:
         pass
 
     def ask_letter(self):
-        pass
+        letter = input("Guess a letter: ").upper()
+        if len(letter) > 1:
+            print("Please, enter just one character.")
+        elif letter not in string.ascii_letters:
+            print("Please, enter a valid character.")
+        else:
+            print(f"Thanks, you entered the letter {letter}")
     
 def play_game(word_list):
     game = Hangman(word_list, num_lives=5)
-    pass
+    game.ask_letter()
 
 if __name__ == '__main__':
     word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']
