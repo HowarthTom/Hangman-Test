@@ -12,9 +12,18 @@ class Hangman:
         print(f"The mystery word has {len(self.word)} characters")
         print(f"{self.word_guessed}")
 
-
     def check_letter(self, letter):
-        pass
+        self.list_letters.append(letter)
+        if letter not in self.word:
+            self.num_lives -= 1
+            print(f"Bad luck! {letter} was not in the word. {self.num_lives} lives remaining")
+        else:
+            for character in range(len(self.word)):
+                if self.word[character] == letter:
+                    self.word_guessed[character] = letter
+                    self.num_letters -= 1
+                else:
+                    continue
 
     def ask_letter(self):
         letter = input("Guess a letter: ").upper()
@@ -25,7 +34,7 @@ class Hangman:
         elif letter in self.list_letters:
             print(f"{letter} was already tried. Letters used: {self.list_letters}")
         else:
-            print(f"Thanks, you entered the letter {letter}")
+            self.check_letter(letter)
     
 def play_game(word_list):
     game = Hangman(word_list, num_lives=5)
