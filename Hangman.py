@@ -4,6 +4,12 @@ import string
 class Hangman:
 
     def __init__(self, word_list, num_lives=5):
+        self.word = random.choice(word_list).upper()
+        self.num_letters = len(self.word)
+        self.word_guessed = ["_" for characters in self.word]
+        self.num_lives = num_lives
+        print(f"The mystery word has {len(self.word)} characters")
+        print(f"{self.word_guessed}")
         pass
 
     def check_letter(self, letter):
