@@ -10,7 +10,6 @@ class Hangman:
         self.num_lives = num_lives
         self.list_letters = []
         print(f"The mystery word has {len(self.word)} characters")
-        print(f"{self.word_guessed}")
 
     def check_letter(self, letter):
         self.list_letters.append(letter)
@@ -26,7 +25,9 @@ class Hangman:
                     continue
 
     def ask_letter(self):
+        print("Mystery word:", " ".join(self.word_guessed))
         letter = input("Guess a letter: ").upper()
+        print()
         if len(letter) > 1:
             print("Please, enter just one character.")
         elif letter not in string.ascii_letters:
@@ -38,7 +39,16 @@ class Hangman:
     
 def play_game(word_list):
     game = Hangman(word_list, num_lives=5)
-    game.ask_letter()
+    while game.num_lives != 0:
+        game.ask_letter()
+        if game.num_letters < 1:
+            print(f"Congratulations, you won! {game.word_guessed}")
+            break
+        elif game.num_lives < 1:
+            print(f"You lose! The mystery word was {game.word}")
+            break
+        else:
+            continue
 
 if __name__ == '__main__':
     word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']
